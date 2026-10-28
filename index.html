@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Generador de ideas absurdas</title>
+  <style>
+    :root { font-family: system-ui, sans-serif; color: #f6f3ff; background: #111020; }
+    * { box-sizing: border-box; }
+    body { min-height: 100vh; margin: 0; display: grid; place-items: center; padding: 1.5rem; background: radial-gradient(circle at 20% 20%, #30234e, transparent 42%), radial-gradient(circle at 85% 80%, #183d44, transparent 35%), #111020; }
+    main { width: min(100%, 42rem); padding: clamp(1.5rem, 5vw, 3.5rem); border: 1px solid #ffffff24; border-radius: 1.5rem; background: #171528e8; box-shadow: 0 1.5rem 5rem #0006; }
+    .label { color: #b8a3ff; font-size: .8rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+    h1 { margin: .75rem 0; font-size: clamp(2rem, 6vw, 3.5rem); line-height: 1.05; letter-spacing: -.04em; }
+    .intro { color: #b8b5c9; line-height: 1.6; }
+    .idea { min-height: 10rem; display: grid; align-items: center; margin: 2rem 0; padding: 1.5rem; border: 1px solid #ffffff1c; border-radius: 1rem; background: #ffffff08; font-size: clamp(1.3rem, 4vw, 1.9rem); line-height: 1.35; }
+    button { border: 0; border-radius: .75rem; padding: .9rem 1.2rem; background: #c1afff; color: #19122e; font: inherit; font-weight: 700; cursor: pointer; }
+    button:hover { background: #d4c8ff; }
+    button:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
+    footer { margin-top: 2rem; color: #868296; font-size: .8rem; }
+  </style>
+</head>
+<body>
+  <main>
+    <span class="label">Un pequeño experimento ✨</span>
+    <h1>Ideas que nadie pidió.</h1>
+    <p class="intro">Para esos momentos en los que necesitas inspiración… o simplemente algo raro.</p>
+    <div class="idea" id="idea" aria-live="polite">Pulsa el botón y deja que el azar haga su magia.</div>
+    <button type="button" id="generate">Sorpréndeme →</button>
+    <footer>Hecho con curiosidad y una pizca de caos.</footer>
+  </main>
+  <script>
+    const subjects = ['Un gato detective', 'Una tostadora astronauta', 'Un pulpo bibliotecario', 'Un robot poeta', 'Una planta con superpoderes', 'Un dragón vegetariano', 'Una nube con insomnio', 'Un pingüino inventor'];
+    const actions = ['abre una cafetería', 'organiza una fiesta', 'escribe una novela', 'busca un tesoro', 'aprende a bailar', 'funda una banda', 'resuelve un misterio', 'construye una máquina del tiempo'];
+    const endings = ['en la Luna.', 'para un ejército de patos.', 'sin salir de su habitación.', 'con ayuda de una abuela ninja.', 'en un universo hecho de pizza.', 'antes de que termine el recreo.', 'mientras llueve confeti.', 'y descubre que todo era un sueño.'];
+    const pick = items => items[Math.floor(Math.random() * items.length)];
+    document.getElementById('generate').addEventListener('click', () => {
+      document.getElementById('idea').textContent = `${pick(subjects)} ${pick(actions)} ${pick(endings)}`;
+    });
+  </script>
+</body>
+</html>
